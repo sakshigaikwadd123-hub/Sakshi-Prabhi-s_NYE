@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year Baby ??</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Poppins:wght@400;600;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #e63946;
+            --soft-pink: #ffb6c1;
+            --deep-pink: #ff6b8a;
+            --bg-cream: #fff5f5;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-cream);
+            overflow-x: hidden;
+            color: #333;
+        }
+
+        /* --- Transitions --- */
+        .page {
+            min-height: 100vh;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        .page.active { display: flex; }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Floating Elements --- */
+        .float-heart {
+            position: fixed;
+            color: var(--primary-red);
+            pointer-events: none;
+            z-index: 999;
+            animation: floatUp 4s linear forwards;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        }
+
+        /* --- Page 1 Styles --- */
+        .countdown-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .highlight-name { color: var(--primary-red); }
+
+        .countdown-display {
+            background: #ff85a1; /* Matches PDF pink bar */
+            padding: 25px;
+            border-radius: 20px;
+            display: flex;
+            gap: 15px;
+            box-shadow: 0 8px 0 #d64d6d;
+            margin: 30px 0;
+        }
+
+        .time-group { display: flex; flex-direction: column; align-items: center; }
+
+        .digit-container { display: flex; gap: 5px; }
+
+        .digit {
+            background: white;
+            width: 45px;
+            height: 60px;
+            border-radius: 8px;
+            font-size: 2rem;
+            font-weight: 900;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #000;
+        }
+
+        .label { font-size: 0.8rem; color: white; margin-top: 5px; font-weight: 600; }
+
+        /* --- PDF Graphics --- */
+        .pdf-heart-graphic { width: 120px; margin-bottom: 20px; animation: heartbeat 1.5s infinite; }
+        .pdf-envelope-graphic { width: 100px; margin-top: 20px; }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* --- Buttons --- */
+        .btn-celebrate {
+            background: var(--primary-red);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+            transition: 0.3s;
+        }
+
+        .btn-celebrate:hover { transform: scale(1.05); background: #c12a36; }
+
+        /* --- Page 2 Styles --- */
+        .handwritten {
+            font-family: 'Caveat', cursive;
+            font-size: 2.5rem;
+            color: var(--primary-red);
+        }
+
+        .love-letter {
+            max-width: 600px;
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 10px 10px 0 var(--soft-pink);
+            margin: 20px;
+            line-height: 1.6;
+        }
+
+        /* --- Page 3 Styles --- */
+        .page-3 { background: #5e4a8e; color: white; } /* Purple background from PDF */
+        
+        .gallery-container {
+            width: 90%;
+            max-width: 1000px;
+            border: 10px solid white;
+            padding: 10px;
+            background: #4a3b72;
+        }
+
+        .bunting-svg { width: 100%; max-width: 600px; margin-bottom: -20px; }
+
+    </style>
+</head>
+<body>
+
+    <div class="page active" id="page1">
+        <svg class="pdf-heart-graphic" viewBox="0 0 100 100">
+            <path d="M40 30 Q40 10 60 10 Q80 10 80 30 Q80 50 40 80 Q0 50 0 30 Q0 10 20 10 Q40 10 40 30" fill="#e63946"/>
+            <path d="M60 40 Q60 25 75 25 Q90 25 90 40 Q90 55 60 80 Q30 55 30 40 Q30 25 45 25 Q60 25 60 40" fill="#ffb6c1" opacity="0.9"/>
+        </svg>
+
+        <h1 class="countdown-title">Counting down to<br><span class="highlight-name">Prabhi & Sakshi's</span><br>special year!</h1>
+        <p>You mean the world to me and I can't express that in words.</p>
+
+        <div class="countdown-display">
+            <div class="time-group">
+                <div class="digit-container">
+                    <div class="digit" id="h1">0</div>
+                    <div class="digit" id="h2">0</div>
+                </div>
+                <span class="label">hours</span>
+            </div>
+            <div class="time-group">
+                <div class="digit-container">
+                    <div class="digit" id="m1">0</div>
+                    <div class="digit" id="m2">0</div>
+                </div>
+                <span class="label">minutes</span>
+            </div>
+            <div class="time-group">
+                <div class="digit-container">
+                    <div class="digit" id="s1">0</div>
+                    <div class="digit" id="s2">0</div>
+                </div>
+                <span class="label">seconds</span>
+            </div>
+        </div>
+
+        <p style="margin-bottom: 20px; font-weight: 600;">A special celebration awaits you at midnight...</p>
+        <button class="btn-celebrate" onclick="showPage(2)">Let's Celebrate</button>
+
+        <svg class="pdf-envelope-graphic" viewBox="0 0 100 100">
+            <rect x="10" y="30" width="80" height="50" fill="#ffb6c1" rx="5"/>
+            <path d="M10 30 L50 60 L90 30" stroke="#e63946" stroke-width="3" fill="none"/>
+            <text x="40" y="25" font-size="20">??</text>
+        </svg>
+    </div>
+
+    <div class="page" id="page2">
+        <h1 class="handwritten">Happy New Year Baby!</h1>
+        <div class="love-letter">
+            <p>I love you soooo much!</p>
+            <p style="margin-top: 15px;">May this year bring more <b>happiness, love,</b> and beautiful <b>new beginnings</b> for us.</p>
+            <p style="margin-top: 15px;">I promise to love you even more with every passing day and to always stand by you, no matter what.</p>
+            <p style="margin-top: 15px; font-weight: 700; color: var(--primary-red);">Forever yours, my Raja beta!</p>
+        </div>
+        <p class="handwritten" style="font-size: 1.5rem;">Ready for your surprise?</p>
+        <button class="btn-celebrate" style="margin-top: 20px;" onclick="showPage(3)">Click here</button>
+    </div>
+
+    <div class="page page-3" id="page3">
+        <svg class="bunting-svg" viewBox="0 0 400 50">
+            <path d="M0 10 Q200 40 400 10" stroke="white" fill="none" />
+            <polygon points="20,15 40,15 30,35" fill="#ff6b6b" />
+            <polygon points="60,18 80,18 70,38" fill="#ffd93d" />
+            <polygon points="100,20 120,20 110,40" fill="#ff6b6b" />
+            <polygon points="300,18 320,18 310,38" fill="#ffd93d" />
+        </svg>
+
+        <h2 style="font-family: 'Montserrat'; font-size: 2.5rem; margin-bottom: 20px;">OUR SWEET MEMORIES!</h2>
+        
+        <div class="gallery-container">
+            <img src="YOUR_COLLAGE_IMAGE_URL_HERE" alt="Memories Collage" style="width: 100%; display: block;">
+        </div>
+        
+        <button class="btn-celebrate" style="margin-top: 30px; background: white; color: #5e4a8e;" onclick="showPage(1)">Back to Start</button>
+    </div>
+
+    <script>
+        // --- Countdown Logic ---
+        function updateTimer() {
+            const target = new Date('January 1, 2026 00:00:00').getTime();
+            const now = new Date().getTime();
+            const diff = target - now;
+
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+            const hStr = h.toString().padStart(2, '0');
+            const mStr = m.toString().padStart(2, '0');
+            const sStr = s.toString().padStart(2, '0');
+
+            document.getElementById('h1').innerText = hStr[0];
+            document.getElementById('h2').innerText = hStr[1];
+            document.getElementById('m1').innerText = mStr[0];
+            document.getElementById('m2').innerText = mStr[1];
+            document.getElementById('s1').innerText = sStr[0];
+            document.getElementById('s2').innerText = sStr[1];
+        }
+        setInterval(updateTimer, 1000);
+
+        // --- Page Navigation & Celebrations ---
+        function showPage(num) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page' + num).classList.add('active');
+            
+            // Trigger floating hearts
+            for(let i=0; i<15; i++) {
+                setTimeout(createHeart, i * 100);
+            }
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('float-heart');
+            heart.innerHTML = Math.random() > 0.5 ? '??' : '??';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 4000);
+        }
+
+        // Run on load
+        updateTimer();
+    </script>
+</body>
+</html>
